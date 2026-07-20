@@ -34,4 +34,14 @@ export class ProductsPage{
     async goToCart() {
         await this.cartIcon.click();
     }
+
+    async goToProductDetails(productName: string) {
+        await this.page
+        .locator('.inventory_item_label')
+        .filter({
+            has: this.page.locator('.inventory_item_name', { hasText: productName }),
+        })
+        .getByRole('link')
+        .click();
+    }
 }
