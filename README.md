@@ -26,6 +26,26 @@ npx playwright show-report
 ```
 7. Type CTRL + C in the terminal to quit the report.
 
+### Troubleshooting
+
+1. Error: browserType.launch: Executable doesn't exist at `/browser/path`
+
+In some instances, it might be required to install the binaries of the browser you are testing on. To do this, feel free to do the following:
+
+**Chrome**
+
+```bash
+npx playwright install chromium
+npx playwright test
+```
+
+**Firefox**
+
+```bash
+npx playwright install firefox
+npx playwright test --project=firefox
+```
+
 ## Additional tests (5 and 3 negative ones)
 There are 5 additional tests made besides the ones solicited. 3 of them expect a negative outcome.
 1. Log in with a restricted user --> expects to receive an error message.
