@@ -41,6 +41,8 @@ test('add multiple products to cart', async ({page}) => {
     // Go to cart page
     await productsPage.goToCart();
 
+    await expect(page.getByText('Your Cart')).toBeVisible();
+
     // Expect the product to be in the cart
     expect(await cartPage.productIsInCart('Sauce Labs Bike Light')).toBeTruthy();
 });

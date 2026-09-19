@@ -31,6 +31,8 @@ test('complete checkout process', async ({ page }) => {
     // Fill out checkout information
     await checkoutPageOne.continueCheckout('Fernanda', 'Granados', '90901');
 
+    await expect(page.getByText('Checkout: Overview')).toBeVisible();
+
     // Finish checkout
     await checkoutPageTwo.finishCheckout();
 
@@ -74,8 +76,12 @@ test('check item total breakdown', async ({page}) => {
     // Go to checkout page
     await cartPage.checkout();
 
+    await expect(page.getByText('Your Cart')).toBeVisible();
+
     // Fill out checkout information
     await checkoutPageOne.continueCheckout('Fernanda', 'Granados', '90901');
+
+    await expect(page.getByText('Checkout: Overview')).toBeVisible();
 
     const displayedTotal = await checkoutPageTwo.getItemTotal();
     const productPrices = await checkoutPageTwo.getProductPrices();

@@ -6,7 +6,7 @@ export class ProductsPage{
 
     constructor(page: Page) {
         this.page = page;
-        this.cartIcon = this.page.locator('.shopping_cart_link');
+        this.cartIcon = this.page.locator('.shopping_cart_container').getByRole('button');
     }
 
     async addToCart(productName: string) {
@@ -41,7 +41,7 @@ export class ProductsPage{
         .filter({
             has: this.page.locator('.inventory_item_name', { hasText: productName }),
         })
-        .getByRole('link')
+        .getByRole('button')
         .click();
     }
 }
